@@ -19,7 +19,7 @@ string[] GetNewArray(string[] array)
     {
         if (array[i].Length <= 3)
         {
-            newArr[j] = array[i];
+            newArr[j++] = array[i];
         }
     }
     return newArr;
@@ -35,10 +35,24 @@ string[] CreateArray(int countElement)
     return array;
 }
 
+string OutputArray(string[] array)
+{
+    string outputString = "[";
+    for(int i=0; i<array.Length;)
+    {
+        outputString += $"{array[i]}";
+        if(++i<array.Length)
+        {
+            outputString += ", ";
+        }
+    }
+    return outputString += "]";
+}
+
 Console.Write("Введите количество элементов в массиве: ");
 int count = Int32.Parse(Console.ReadLine());
-Console.WriteLine("Построчно введите элементы массива");
+Console.WriteLine("Построчно введите элементы массива:");
 string[] oldArr = CreateArray(count);
 string[] newArr = GetNewArray(oldArr);
-
+Console.WriteLine($"Результат: {OutputArray(newArr)}");
 
